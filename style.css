@@ -1,45 +1,63 @@
 /* Import Google Font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-body{
+
+body {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 10px;
   min-height: 100vh;
   width: 100%;
-  /* Background Image  */
   background-image: url('background image.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: background-color 0.3s, color 0.3s;
 }
-.container{
+
+.theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* Light Theme Container */
+.container {
   max-width: 690px;
   width: 100%;
   padding: 30px;
-  background-image: linear-gradient(to bottom right, #e4dddb, #615f5f); /* Slightly transparent white background */
+  background-image: linear-gradient(to bottom right, #87594c, #7b3838);
   border-radius: 50px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.09);
+  transition: background 0.3s;
 }
-.wrapper{
+
+.wrapper {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
-.wrapper .text-input{
+
+.wrapper .text-input {
   display: flex;
   border-bottom: 1px solid #ccc;
 }
-.text-input .to-text{
-  border-radius: 0px;
+
+.text-input .to-text {
   border-left: 1px solid #ccc;
+  border-radius: 0px;
 }
-.text-input textarea{
+
+.text-input textarea {
   height: 250px;
   width: 100%;
   border: none;
@@ -49,23 +67,29 @@ body{
   font-size: 18px;
   padding: 10px 15px;
   border-radius: 5px;
+  color: #000;
 }
-.text-input textarea::placeholder{
+
+.text-input textarea::placeholder {
   color: #b7b6b6;
 }
-.controls, li, .icons, .icons i{
+
+.controls, li, .icons, .icons i {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.controls{
+
+.controls {
   list-style: none;
   padding: 12px 15px;
 }
-.controls .row .icons{
+
+.controls .row .icons {
   width: 38%;
 }
-.controls .row .icons i{
+
+.controls .row .icons i {
   width: 50px;
   color: #adadad;
   font-size: 14px;
@@ -73,15 +97,18 @@ body{
   transition: transform 0.2s ease;
   justify-content: center;
 }
-.controls .row.from .icons{
+
+.controls .row.from .icons {
   padding-right: 15px;
   border-right: 1px solid #ccc;
 }
-.controls .row.to .icons{
+
+.controls .row.to .icons {
   padding-left: 15px;
   border-left: 1px solid #ccc;
 }
-.controls .row select{
+
+.controls .row select {
   color: #333;
   border: none;
   outline: none;
@@ -89,35 +116,43 @@ body{
   background: none;
   padding-left: 5px;
 }
-.text-input textarea::-webkit-scrollbar{
+
+.text-input textarea::-webkit-scrollbar {
   width: 4px;
 }
-.controls .row select::-webkit-scrollbar{
+
+.controls .row select::-webkit-scrollbar {
   width: 8px;
 }
+
 .text-input textarea::-webkit-scrollbar-track,
-.controls .row select::-webkit-scrollbar-track{
+.controls .row select::-webkit-scrollbar-track {
   background: #fff;
 }
-.text-input textarea::-webkit-scrollbar-thumb{
+
+.text-input textarea::-webkit-scrollbar-thumb {
   background: #ddd;
   border-radius: 8px;
 }
-.controls .row select::-webkit-scrollbar-thumb{
+
+.controls .row select::-webkit-scrollbar-thumb {
   background: #999;
   border-radius: 8px;
   border-right: 2px solid #ffffff;
 }
-.controls .exchange{
+
+.controls .exchange {
   color: #adadad;
   cursor: pointer;
   font-size: 16px;
   transition: transform 0.2s ease;
 }
-.controls i:active{
+
+.controls i:active {
   transform: scale(0.9);
 }
-.container button{
+
+.container button {
   width: 100%;
   padding: 14px;
   outline: none;
@@ -130,35 +165,7 @@ body{
   background: #5372F0;
 }
 
-@media (max-width: 660px){
-  .container{
-    padding: 20px;
-  }
-  .wrapper .text-input{
-    flex-direction: column;
-  }
-  .text-input .to-text{
-    border-left: 0px;
-    border-top: 1px solid #ccc;
-  }
-  .text-input textarea{
-    height: 200px;
-  }
-  .controls .row .icons{
-    display: none;
-  }
-  .container button{
-    padding: 13px;
-    font-size: 16px;
-  }
-  .controls .row select{
-    font-size: 16px;
-  }
-  .controls .exchange{
-    font-size: 14px;
-  }
-}
-
+/* Header */
 .header {
   display: flex;
   justify-content: center;
@@ -166,8 +173,6 @@ body{
   width: 100%;
   height: 50px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  border: #333;
-  border-width: 20vh;
 }
 
 .logo-container {
@@ -179,27 +184,145 @@ body{
   border-radius: 50%;
   height: 40px;
   width: 40px;
-  margin-right: 10px; /* Add some space between the logo and the text */
+  margin-right: 10px;
 }
 
 .title {
   font-size: 20px;
   font-weight: bold;
-  color: #070000; /* Darker color for text */
+  color: #070000;
 }
+
+/* Responsive */
+@media (max-width: 660px) {
+  .container {
+    padding: 20px;
+  }
+
+  .wrapper .text-input {
+    flex-direction: column;
+  }
+
+  .text-input .to-text {
+    border-left: 0px;
+    border-top: 1px solid #ccc;
+  }
+
+  .text-input textarea {
+    height: 200px;
+  }
+
+  .controls .row .icons {
+    display: none;
+  }
+
+  .container button {
+    padding: 13px;
+    font-size: 16px;
+  }
+
+  .controls .row select {
+    font-size: 16px;
+  }
+
+  .controls .exchange {
+    font-size: 14px;
+  }
+}
+
+/* Microphone Animation */
 #from-mic.listening {
   color: red;
   animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
-  0% {
-      transform: scale(1);
-  }
-  50% {
-      transform: scale(1.2);
-  }
-  100% {
-      transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
+
+/* -----------------------------------
+   DARK MODE STYLES
+------------------------------------*/
+body.dark-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('night mode image.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .container {
+  background: #1e1e1e;
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .wrapper {
+  border-color: #555;
+}
+
+body.dark-mode .wrapper .text-input {
+  border-color: #555;
+}
+
+body.dark-mode .text-input .to-text {
+  border-color: #555;
+}
+
+body.dark-mode .text-input textarea {
+  color: #e0e0e0;
+}
+
+body.dark-mode .text-input textarea::placeholder {
+  color: #888;
+}
+
+body.dark-mode .controls .row .icons i {
+  color: #ccc;
+}
+
+body.dark-mode .controls .row.from .icons {
+  border-color: #555;
+}
+
+body.dark-mode .controls .row.to .icons {
+  border-color: #555;
+}
+
+body.dark-mode .controls .exchange {
+  color: #ccc;
+}
+
+body.dark-mode .controls .row select {
+  color: #eee;
+}
+
+body.dark-mode .text-input textarea::-webkit-scrollbar-track,
+body.dark-mode .controls .row select::-webkit-scrollbar-track {
+  background: #2e2e2e;
+}
+
+body.dark-mode .text-input textarea::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+body.dark-mode .controls .row select::-webkit-scrollbar-thumb {
+  background: #777;
+  border-right: 2px solid #1e1e1e;
+}
+
+body.dark-mode .container button {
+  background: #4461e2;
+}
+
+body.dark-mode .title {
+  color: #f0f0f0;
+}
+
